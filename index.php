@@ -75,6 +75,20 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Ulasan
                             </a>
+
+                            <?php
+                                if($_SESSION['user']['level'] !='peminjam'){
+                            ?>
+                            <a class="nav-link" href="?page=laporan">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                            Laporan
+                            </a>
+                            <?php
+                            }
+                            ?>
+
+
+
                             <a class="nav-link" href="logout.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-logout"></i></div>
                                 Logout

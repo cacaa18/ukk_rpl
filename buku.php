@@ -2,7 +2,7 @@
 <br>
 <div class="row">
     <div class="col-md-12">
-        <a href="?page=buku_tambah" class="btn btn-primary mb-3">+ Tambah Kategori</a>
+        <a href="?page=buku_tambah" class="btn btn-primary mb-3">+ Tambah Buku</a>
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <tr>
                 <th>No</th>

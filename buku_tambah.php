@@ -22,9 +22,9 @@
                 $query = mysqli_query($koneksi, "INSERT  INTO buku(id_kategori,Judul,Penulis, cover,Penerbit,tahun_terbit,Deskripsi)values ('$id_kategori','$judul','$penulis', '$fileName', '$penerbit','$tahun_terbit','$deskripsi')");
 
                 if($query){
-                  echo '<scrip>alert("Tambah Data Berhasil.");</scriipt>';
+                  echo '<script>alert("Tambah Data Berhasil.");</script>';
                 }else{
-                  echo '<scrip>alert("Tambah Data Gagal.");</scriipt>';
+                  echo '<script>alert("Tambah Data Gagal.");</script>';
                 }
               }
            ?>

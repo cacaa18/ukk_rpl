@@ -1,5 +1,31 @@
 <?php
     include"koneksi.php";
+
+    if (isset($_POST['login'])) {
+        $username = $_POST['username'];
+        $password = md5($_POST['password']);
+        $data = mysqli_query($koneksi, "SELECT*FROM user where username='$username' and password='$password'");
+        $cek = mysqli_num_rows($data);
+        $akun = mysqli_fetch_array($data);
+    
+        if ($cek < 1) {
+            echo "<script>alert('No user'); location.href = 'login.php'</script>";
+        }
+    
+        if ($akun['level'] === 'admin') {
+            $_SESSION['user'] = $akun;
+            echo '<script>location.href="index.php";</script>';
+        }
+    
+        // if ($akun['level'] === 'petugas') {
+        //     $_SESSION['user'] = $akun;
+        //     echo '<script>location.href="index.php";</script>';
+        // }
+    
+        $_SESSION['user'] = $akun;
+        echo '<script>location.href="user/user.php";</script>';
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
