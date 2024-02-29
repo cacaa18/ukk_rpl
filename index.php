@@ -76,6 +76,11 @@
                                 Ulasan
                             </a>
 
+                            <a class="nav-link" href="?page=peminjaman_admin">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Peminjaman
+                            </a>
+
                             <?php
                                 if($_SESSION['user']['level'] !='peminjam'){
                             ?>

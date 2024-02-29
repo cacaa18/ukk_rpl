@@ -1,3 +1,8 @@
+<?php
+include("../koneksi.php");
+$query = mysqli_query($koneksi, "SELECT * FROM buku");
+$queryCategory = mysqli_query($koneksi, "SELECT * FROM kategori")
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,137 +16,60 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"> 
 
 </head>
-  <body>
-<nav class="navbar">
-  <div class="container-fluid">
-    <a class="navbar-brand ms-5 judul" href="#">
-      <img src="assets/img/image1.png"alt="Logo" width="40" height="30" class="d-inline-block align-text-top">
-      MoodReads
-    </a>
-    <form action="{{ url('logout') }}" method="POST">
-      @csrf
-      <button type="submit"> Logout </button>
-  </form>
-
-    
-    <div class="prof justify-content-center d-flex align-items-center">
-      <div>
-        <div class="profil"></div>
-        <img src="{{asset('/assets/bulat.svg')}}" alt="" width="30px" height="30px" class="mt-2">
-        <div class="nama">
-            <P>Nazsya Rahma</P>
-            <P>User</P>
-
-        </div>
+<body>
+<nav style="background-color: #525CEB;height:60px">
+  <div class="container-fluid d-flex" style="justify-content: space-between;">
+    <div class="mt-3" style="font-size: 20px; font-weight:bold;">
+      <a class="navbar-brand ms-5 text-white" href="#">
+        MoodReads
+      </a>
     </div>
-</div>
+    <div class="mt-3" style="display:flex; justify-content:end; align-items:right;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="color: #fff;" class="bi bi-person-circle me-5" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+      </svg>
+    </div>
+  </div>
 </nav>
 
-<div class="d-flex justify-content-evenly  mt-4 align-items-center">
+<div class="d-flex justify-content-evenly  mt-4 mb-5 align-items-center">
     <div class="Kategori ">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Kategori
         </button>
         <ul class="dropdown-menu">
-          <li><button class="dropdown-item" type="button">Novel</button></li>
-          <li><button class="dropdown-item" type="button">Fiksi</button></li>
-          <li><button class="dropdown-item" type="button">Pengetahuan</button></li>
-          <li><button class="dropdown-item" type="button">Karya Ilmiah</button></li>
+          <?php while ($category = mysqli_fetch_assoc($queryCategory)) : ?>
+          <li><button class="dropdown-item" type="button"><?= $category['kategori'] ;?></button></li>
+    <?php endwhile ?>
         </ul>
       </div>
       <h1 class="fs-6">Koleksi</h1>
-      <h1 class="fs-6">Peminjaman</h1>
-</div>
+      <a href="pinjam.php">Peminjaman</a>
+    </div>
 
 <div class="d-flex flex-lg-row justify-content-evenly">
 
-    <div class="d-flex  mt-5 align-items-center">
-        <div>
-        <img src="{{asset('/assets/laut.jpg')}}" class="img-thumbnail" width="200" alt="...">
+  <?php while ($buku = mysqli_fetch_assoc($query)) : ?>
+    <div class="">
+        <img src='../assets/upload/<?php echo $buku['cover'] ?>'class='img-thumbnail' width='200' alt='...'>
             <div class="text-wrap d-flex flex-md-column gap-2" style="">
-            <p class="mb-0 fs-4">Laut Bercerita</p>
-            <p class="mb-0 text-secondary">Fiksi</p>
-            <p class="mb-0 text-secondary">By: Leila S. Chudori</p>
+            <p class="mb-0 fs-4"><?php echo $buku['judul'];?></p>
+            <p class="mb-0 text-secondary"><?php echo $buku['id_kategori'];?></p>
+            <p class="mb-0 text-secondary"><?php echo $buku['penulis'];?></p>
+            <div>
+              <a style="text-decoration:none" href='bukudetail_user.php?id=<?php echo $buku['id_buku']; ?>'>Lihat</a>
+            </div>
+            </div>
+          </div>
+            <?php endwhile ?>
 
-
-            <div>
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-            </div>
-            <div>
-            <button type="button" class="btn btn-primary btn-sm">Pinjam</button>
-            <button type="button" class="btn btn-secondary btn-sm ms-5 ">Koleksi</button>
-            </div>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex  mt-5 align-items-center">
-        <div>
-        <img src="{{asset('/assets/laut.jpg')}}" class="img-thumbnail" width="200" alt="...">
-        <div class="text-wrap d-flex flex-column gap-2" style="">
-            <p class="mb-0 fs-4">Laut Bercerita</p>
-            <p class="mb-0 text-secondary">Fiksi</p>
-            <p class="mb-0 text-secondary">By: Leila S. Chudori</p>
-            <div>
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-            </div>
-            <div>
-            <button type="button" class="btn btn-primary btn-sm">Pinjam</button>
-            <button type="button" class="btn btn-secondary btn-sm ms-5 ">Koleksi</button>
-            </div>
-        </div>
-      </div>
-    </div>
-
-        <div class="d-flex flex-md-column mt-5 align-items-center">
-        <div>
-        <img src="{{asset('/assets/laut.jpg')}}" class="img-thumbnail" width="200" alt="...">
-        <div class="text-wrap d-flex flex-column gap-2" style="">
-            <p class="mb-0 fs-4">Laut Bercerita</p>
-            <p class="mb-0 text-secondary">Fiksi</p>
-            <p class="mb-0 text-secondary">By: Leila S. Chudori</p>
-            <div>
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-                <img src="{{asset('/assets/star.svg')}}" class="img" width="20" alt="...">
-            </div>
-            <div>
-            <button type="button" class="btn btn-primary btn-sm">Pinjam</button>
-            <button type="button" class="btn btn-secondary btn-sm ms-5 ">Koleksi</button>
-            </div>
-        </div>
-      </div>
-    </div>
 </div>
 
 <br>
 <br>
 <br>
 
-<footer class="container-fluid d-flex align-items-center"  style="background:#525CEB; padding: 50px 122px">
-  <img src={{asset('assets/image1.png')}} alt="">
-  <div class="footerbawah">
-    <p>MoodReads</p>
-  </div>
-  <div class="footerbawah2 ms-auto">
-    <ul class="navbar-nav d-flex flex-row gap-5">
-      <li><a href="" class="nav-link">About</a></li>
-      <li><a href="" class="nav-link">Home</a></li>
-      <li><a href="" class="nav-link">Career</a></li>
-      <li><a href="" class="nav-link">Help</a></li>
-    </ul>
-    <p>moodreads@gmail.com</p>
-  </div>
-</footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>

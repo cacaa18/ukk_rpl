@@ -29,7 +29,7 @@
                             <td><?php echo $data['penerbit']; ?></td>
                             <td><?php echo $data['tahun_terbit']; ?></td>
                             <td><?php echo $data['deskripsi']; ?></td>
-                            <td>
+                            <td class="d-flex gap-2">
                                 <a href="?page=buku_ubah&&id=<?php echo $data['id_buku']; ?>" class="btn btn-info">Ubah</a>
                                 <a onclick="return confirm('Apakah Anda ingin menghapus Kategori ini?');" href="?page=buku_hapus&&id=<?php echo $data['id_buku']; ?>" class="btn btn-danger">Hapus</a>
                             </td>
