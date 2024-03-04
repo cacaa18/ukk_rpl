@@ -87,6 +87,11 @@
                             User
                             </a>
 
+                            <a class="nav-link" href="?page=petugas">
+                                <div class="sb-nav-link-icon"><i class="bi bi-person-circle"></i></div>
+                            Petugas
+                            </a>
+
 
                             <?php
                                 if($_SESSION['user']['level'] !='peminjam'){
