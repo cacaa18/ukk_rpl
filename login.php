@@ -17,10 +17,10 @@
             echo '<script>location.href="index.php";</script>';
         }
     
-        // if ($akun['level'] === 'petugas') {
-        //     $_SESSION['user'] = $akun;
-        //     echo '<script>location.href="index.php";</script>';
-        // }
+        if ($akun['level'] === 'petugas') {
+            $_SESSION['user'] = $akun;
+            echo '<script>location.href="index.php";</script>';
+        }
     
         $_SESSION['user'] = $akun;
         echo '<script>location.href="user/user.php";</script>';
@@ -46,10 +46,11 @@
                 <div class="container py-5 h-100">
                         <div class="row d-flex align-items-center justify-content-center h-100">
                             <div class="col-md-8 col-lg-7 col-xl-6">
-                                <img src="assets/img/imagej.png"img-fluid mt-0 ml-0" alt="Phone image" height="400px" width="400px" >
+                                <img src="assets/img/imagej.png"img-fluid mt-0 ml-0 alt="Phone image" height="400px" width="400px" >
                             </div>
                             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                                 <?php
+                                
                                 if(isset($_POST['login'])) {
                                     $username = $_POST['username'];
                                     $password = md5($_POST['password']);

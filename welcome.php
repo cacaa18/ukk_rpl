@@ -22,9 +22,17 @@
                 <div class="text">
                     <p>Read books online? 
                         <br>from MoodReads<br></p>
+                        <div class="d-flex justify-content-center gap-4">
+                            <button style="border: none; border-radius:20px; width:100px; height:50px; display: flex; justify-content: center; align-items: center;">
+                                <a style="text-decoration: none; color:#525CEB; font-size:20px;" class="a" href="login.php">Log In</a>
+                            </button>
+                            <button style="border: none; border-radius:20px; width:100px; height:50px; display: flex; justify-content: center; align-items: center;">
+                                <a style="text-decoration: none; color:#525CEB; font-size:20px;" class="a" href="login.php">Sign Up</a>
+                            </button>
+                        </div>
 
-                        <a class="a" href="login.php">Log In</a>
-                        <a class="a" href="register.php">Sign Up</a>
+
+
 
                 </div>
                 <div class="gambar">

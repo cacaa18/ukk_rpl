@@ -17,9 +17,9 @@
                 $query = mysqli_query($koneksi, "UPDATE buku SET id_kategori='$id_kategori', judul='$judul', penulis='$penulis', penerbit='$penerbit', tahun_terbit='$tahun_terbit', Deskripsi='$deskripsi' WHERE id_buku=$id");
 
                 if($query){
-                    echo '<script>alert("Ubah Data Berhasil.")</script>';
+                    echo '<script>alert("Hapus Buku Berhasil.")</script>';
                   }else{
-                    echo '<script>alert("Ubah Data Gagal.");</script>';
+                    echo '<script>alert("Hapus Buku Gagal.");</script>';
                   }
 
               }

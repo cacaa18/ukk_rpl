@@ -29,10 +29,10 @@
                                     $email = $_POST['email'];
                                     $alamat = $_POST['alamat'];
                                     $username = $_POST['username'];
-                                    $level = $_POST['level'];
+                                    $level = "peminjam";
                                     $password = md5($_POST['password']);
                                    
-                                    $insert = mysqli_query($koneksi, "INSERT INTO user(nama,email,alamat,username,password,level) VALUES('$nama','$emai','$alamat','$username','$password','$level')");
+                                    $insert = mysqli_query($koneksi, "INSERT INTO user(nama,email,alamat,username,password,level) VALUES('$nama','$email','$alamat','$username','$password','$level')");
 
                                     if($insert){
                                         echo '<script>alert("Register Berhasil"); location.href="login.php"</script>';
@@ -71,13 +71,6 @@
                                         <input type="password" id="inputPassword" class="form-control form-control-lg py-3" name="password" autocomplete="off" placeholder="Masukkan Password" style="border-radius:25px ;" />
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="small mb-1">Level</label>
-                                        <select name="level" class="form-select py-1">
-                                            <option value="peminjam">Peminjam</option>
-                                            <option value="admin">Admin</option>
-                                        </select>
-                                    </div>
 
                                     <!-- Submit button -->
                                     <!-- <button type="submit" class="btn btn-primary btn-lg">Login in</button> -->

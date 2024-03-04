@@ -32,7 +32,7 @@
                                 
                             <a href="peminjaman_admin_ubah.php?id=<?php echo $data['id_peminjaman']; ?>" class="btn btn-info mb-1">Ubah</a>
 
-                            <a onclick="return confirm('Apakah Anda ingin menghapus Buku ini?');" href="user/peminjaman_hapus.php?id=<?php echo $data['id_peminjaman']; ?>" class="btn btn-info text-white" style="background-color: red; border-color:red;">Hapus</a>
+                            <a onclick="return confirm('Apakah Anda ingin menghapus Buku ini?');" href="peminjaman_admin_hapus.php?id=<?php echo $data['id_peminjaman']; ?>" class="btn btn-info text-white" style="background-color: red; border-color:red;">Hapus</a>
                             </td>
                         </tr>
                     <?php

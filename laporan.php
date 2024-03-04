@@ -25,10 +25,6 @@
               <td><?php echo $data['tanggal_peminjaman']; ?></td>
               <td><?php echo $data['tanggal_pengembalian']; ?></td>
               <td><?php echo $data['status_peminjaman']; ?></td>
-              <td>
-                <a href="?page=ulasan_ubah&&id=<?php echo $data['id_ulasan']; ?>" class="btn btn-info">Ubah</a>
-                <a onclick="return confirm('apakah anda yakin menghapus data ini??')" href="?page=ulasan_hapus&&id=<?php echo $data['id_ulasan']; ?>" class="btn btn-danger">Hapus</a>
-              </td>
               </tr>
               <?php
         }
